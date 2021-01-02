@@ -15,10 +15,15 @@ local function areTablesEqual(a, b)
 end
 
 local function equals(a, b)
-    if type(a) == 'table' and type(b) == 'table' then
+    local typeA = type(a)
+    local typeB = type(b)
+    if typeA == 'table' and typeB == 'table' then
         return areTablesEqual(a, b)
+    elseif typeA == 'boolean' and typeB == 'boolean' then
+        return a == b
     else
         -- TODO: Extend as required
+        print('Error: equals not implemented for given type.')
         return false
     end
 end
